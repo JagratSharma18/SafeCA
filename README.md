@@ -332,7 +332,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines, code style, and 
 
 - **Repository**: [GitHub](https://github.com/JagratSharma18/SafeCA)
 - **Issues**: [Report a bug or request a feature](https://github.com/JagratSharma18/SafeCA/issues)
-- **Security Issues**: Email security@safeca.app (see [SECURITY.md](SECURITY.md))
+- **Security Issues**: Email svtcontactus@gmail.com (see [SECURITY.md](SECURITY.md))
 - **Releases**: [View all releases](https://github.com/JagratSharma18/SafeCA/releases)
 - **General Questions**: Open a discussion or issue on GitHub
 

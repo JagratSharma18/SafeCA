@@ -1,0 +1,22 @@
+# Code Owners
+# This file defines who owns different parts of the codebase
+# All pull requests will require approval from code owners
+
+# Default owner for entire repository
+* @JagratSharma18
+
+# Source code
+/src/ @JagratSharma18
+/popup/ @JagratSharma18
+/scripts/ @JagratSharma18
+
+# Configuration files
+/manifest.json @JagratSharma18
+/package.json @JagratSharma18
+/jest.config.js @JagratSharma18
+
+# Documentation
+/README.md @JagratSharma18
+/CONTRIBUTING.md @JagratSharma18
+/LICENSE @JagratSharma18
+/SECURITY.md @JagratSharma18

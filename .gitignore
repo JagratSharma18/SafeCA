@@ -5,6 +5,7 @@ node_modules/
 dist/
 build/
 dist-firefox/
+Website/
 
 # IDE
 .vscode/

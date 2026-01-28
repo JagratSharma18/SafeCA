@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "Real-time token safety scanning for meme coins and crypto launches",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JagratSharma18/SafeCA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JagratSharma18/SafeCA/issues"
+  },
+  "homepage": "https://github.com/JagratSharma18/SafeCA#readme",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js",
     "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js --watch",

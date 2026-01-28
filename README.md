@@ -1,18 +1,23 @@
-# 🛡️ Safe CA - Token Safety Scanner
+# Safe CA - Token Safety Scanner
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0-green.svg)](package.json)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-yellow.svg)](https://chrome.google.com/webstore)
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox-Add--on-orange.svg)](https://addons.mozilla.org)
 
 A lightweight, cross-browser extension for real-time token safety scanning of meme coins and crypto launches. Automatically detects contract addresses on X/Twitter and provides instant risk assessment with color-coded badges.
 
 ![Safe CA Banner](./icons/icon128.png)
 
-## ✨ Features
+## Features
 
-### 🔍 Automatic CA Detection
+### Automatic CA Detection
 - Scans X/Twitter timelines and custom websites in real-time
 - Add any website to the allowed list in settings
 - Detects both EVM (Ethereum, BSC, Polygon, etc.) and Solana addresses
 - Uses efficient regex matching with debounced processing
 
-### 🎯 Safety Scoring
+### Safety Scoring
 - 0-100 safety score based on multiple factors:
   - Liquidity lock status (25%)
   - Ownership renounced (15%)
@@ -22,12 +27,12 @@ A lightweight, cross-browser extension for real-time token safety scanning of me
   - Contract verification (10%)
   - Trading activity (5%)
 
-### 🏷️ Visual Badges
+### Visual Badges
 - **Green (80-100)**: Safe - Low risk indicators
 - **Yellow (50-79)**: Caution - Some concerns
 - **Red (0-49)**: Danger - High risk
 
-### 👁️ Watchlist & Alerts
+### Watchlist & Alerts
 - Add tokens to watchlist for monitoring
 - Automatic polling every 5 minutes
 - Desktop notifications for significant changes:
@@ -35,12 +40,12 @@ A lightweight, cross-browser extension for real-time token safety scanning of me
   - Score decreases
   - Honeypot detection
 
-### 🖱️ Manual Scanning
+### Manual Scanning
 - Right-click context menu for quick scans
 - Popup interface for manual address input
 - Support for multiple chains
 
-## 🚀 Installation
+## Installation
 
 ### Chrome / Brave
 1. Download the latest release or build from source
@@ -54,7 +59,7 @@ A lightweight, cross-browser extension for real-time token safety scanning of me
 3. Click "Load Temporary Add-on"
 4. Select the `.zip` file or `manifest.json`
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 - Node.js 18+
@@ -113,7 +118,7 @@ safe-ca/
 - **Honeypot.is**: Honeypot detection
 - **DexScreener**: Market data and liquidity
 
-## 📊 Scoring Algorithm
+## Scoring Algorithm
 
 The safety score is calculated using weighted factors:
 
@@ -127,7 +132,7 @@ The safety score is calculated using weighted factors:
 | Verified | 10% | Contract source verified |
 | Activity | 5% | Trading volume, tx count |
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -147,7 +152,7 @@ npm run test:watch
 4. **Watchlist**: Add token, verify polling and notifications
 5. **Context Menu**: Right-click selected text to scan
 
-## 📦 Building for Production
+## Building for Production
 
 ```bash
 # Build optimized bundle
@@ -161,30 +166,42 @@ Output:
 - `build/safe-ca-chrome-v1.0.0.zip` - Chrome Web Store
 - `build/safe-ca-firefox-v1.0.0.zip` - Firefox Add-ons
 
-## 🔒 Privacy & Security
+## Privacy & Security
 
 - **Read-only**: No wallet connections or transactions
 - **No data collection**: All data stays in your browser
 - **Open source**: Full transparency of code
 - **Minimal permissions**: Only what's needed
 
-## 🤝 Contributing
+## Contributing
 
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) first.
+
+### Quick Start
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests
-5. Submit a pull request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📄 License
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## Support
+
+- **Bug Reports**: [Open an issue](https://github.com/JagratSharma18/SafeCA/issues)
+- **Feature Requests**: [Request a feature](https://github.com/JagratSharma18/SafeCA/issues)
+- **Security Issues**: Email security@safeca.app (see [SECURITY.md](SECURITY.md))
+- **General Questions**: Open a discussion or issue
+
+## License
 
 MIT License - see [LICENSE](LICENSE) for details
 
-## ⚠️ Disclaimer
+## Disclaimer
 
 Safe CA is a tool to help identify potential risks in tokens. It is NOT financial advice. Always do your own research (DYOR) before investing. The safety score is based on publicly available data and may not catch all risks.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [GoPlus Labs](https://gopluslabs.io/) for security API
 - [RugCheck](https://rugcheck.xyz/) for Solana analysis
@@ -193,4 +210,4 @@ Safe CA is a tool to help identify potential risks in tokens. It is NOT financia
 
 ---
 
-Made with 💙 by the Safe CA Team
+Made by the Safe CA Team

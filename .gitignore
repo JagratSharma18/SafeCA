@@ -30,3 +30,6 @@ coverage/
 # Temporary files
 *.tmp
 *.temp
+
+# Package files (keep package-lock.json for reproducible builds)
+*.zip

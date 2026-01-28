@@ -1,0 +1,617 @@
+/**
+ * Safe CA - Content Script Styles
+ * Injected into X/Twitter pages
+ */
+
+/* CSS Variables */
+:root {
+  --safeca-green: #22c55e;
+  --safeca-yellow: #eab308;
+  --safeca-red: #ef4444;
+  --safeca-blue: #3b82f6;
+  --safeca-gray: #6b7280;
+  --safeca-dark-bg: #1f2937;
+  --safeca-dark-surface: #374151;
+  --safeca-dark-border: #4b5563;
+  --safeca-text-primary: #f3f4f6;
+  --safeca-text-secondary: #9ca3af;
+  --safeca-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --safeca-radius: 8px;
+  --safeca-radius-sm: 4px;
+  --safeca-transition: all 0.2s ease;
+}
+
+/* Address wrapper */
+.safeca-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  position: relative;
+  border-radius: var(--safeca-radius-sm);
+  transition: var(--safeca-transition);
+}
+
+.safeca-address:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.safeca-address-text {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+}
+
+/* Badge styles */
+.safeca-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
+  margin-left: 4px;
+  transition: var(--safeca-transition);
+  animation: safeca-fadeIn 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.safeca-badge:hover {
+  transform: scale(1.1);
+}
+
+.safeca-badge-safe {
+  background: var(--safeca-green);
+}
+
+.safeca-badge-warning {
+  background: var(--safeca-yellow);
+  color: #1a1a1a;
+}
+
+.safeca-badge-danger {
+  background: var(--safeca-red);
+}
+
+.safeca-badge-error {
+  background: var(--safeca-gray);
+}
+
+.safeca-badge-loading {
+  background: var(--safeca-blue);
+  min-width: 20px;
+}
+
+/* Spinner */
+.safeca-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: safeca-spin 0.8s linear infinite;
+}
+
+/* Tooltip */
+.safeca-tooltip {
+  position: absolute;
+  z-index: 999999;
+  background: var(--safeca-dark-bg);
+  border: 1px solid var(--safeca-dark-border);
+  border-radius: var(--safeca-radius);
+  padding: 12px;
+  min-width: 200px;
+  max-width: 280px;
+  box-shadow: var(--safeca-shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  animation: safeca-fadeIn 0.2s ease;
+}
+
+.safeca-tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--safeca-dark-border);
+}
+
+.safeca-tooltip-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-tooltip-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+}
+
+.safeca-tooltip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.safeca-tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--safeca-text-secondary);
+}
+
+.safeca-tooltip-value {
+  font-weight: 500;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-tooltip-value.safeca-safe { color: var(--safeca-green); }
+.safeca-tooltip-value.safeca-warning { color: var(--safeca-yellow); }
+.safeca-tooltip-value.safeca-danger { color: var(--safeca-red); }
+
+.safeca-tooltip-footer {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--safeca-dark-border);
+  font-size: 11px;
+  color: var(--safeca-text-secondary);
+  text-align: center;
+}
+
+/* Detail Popup */
+.safeca-popup {
+  position: absolute;
+  z-index: 999999;
+  background: var(--safeca-dark-bg);
+  border: 1px solid var(--safeca-dark-border);
+  border-radius: var(--safeca-radius);
+  width: 360px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--safeca-shadow);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  animation: safeca-slideIn 0.3s ease;
+}
+
+.safeca-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: var(--safeca-blue);
+  border-radius: var(--safeca-radius) var(--safeca-radius) 0 0;
+}
+
+.safeca-popup-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+}
+
+.safeca-popup-title svg {
+  width: 18px;
+  height: 18px;
+}
+
+.safeca-popup-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--safeca-transition);
+}
+
+.safeca-popup-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.safeca-popup-close svg {
+  width: 14px;
+  height: 14px;
+}
+
+.safeca-popup-content {
+  padding: 16px;
+}
+
+.safeca-popup-token {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.safeca-popup-token-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-popup-symbol {
+  font-size: 13px;
+  color: var(--safeca-text-secondary);
+  background: var(--safeca-dark-surface);
+  padding: 2px 8px;
+  border-radius: var(--safeca-radius-sm);
+}
+
+.safeca-popup-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+}
+
+.safeca-popup-score-value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.safeca-popup-score-label {
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.safeca-popup-address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--safeca-dark-surface);
+  padding: 10px 12px;
+  border-radius: var(--safeca-radius-sm);
+  margin-bottom: 12px;
+}
+
+.safeca-popup-address code {
+  flex: 1;
+  font-size: 11px;
+  color: var(--safeca-text-secondary);
+  font-family: 'SF Mono', 'Monaco', monospace;
+  word-break: break-all;
+}
+
+.safeca-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--safeca-radius-sm);
+  color: var(--safeca-text-secondary);
+  transition: var(--safeca-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.safeca-copy-btn:hover {
+  background: var(--safeca-dark-border);
+  color: var(--safeca-text-primary);
+}
+
+.safeca-popup-chain {
+  margin-bottom: 16px;
+}
+
+.safeca-chain-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--safeca-blue);
+  background: rgba(59, 130, 246, 0.15);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* Flags */
+.safeca-popup-flags {
+  margin-bottom: 16px;
+}
+
+.safeca-popup-flags h4 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-flags-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.safeca-flag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--safeca-radius-sm);
+  font-size: 12px;
+}
+
+.safeca-flag-critical {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--safeca-red);
+}
+
+.safeca-flag-warning {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--safeca-yellow);
+}
+
+.safeca-flag-info {
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--safeca-green);
+}
+
+.safeca-flag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.safeca-flag-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.safeca-flag-message {
+  flex: 1;
+}
+
+/* Metrics */
+.safeca-popup-metrics {
+  margin-bottom: 16px;
+}
+
+.safeca-popup-metrics h4 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.safeca-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px;
+  background: var(--safeca-dark-surface);
+  border-radius: var(--safeca-radius-sm);
+}
+
+.safeca-metric-label {
+  font-size: 11px;
+  color: var(--safeca-text-secondary);
+}
+
+.safeca-metric-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-metric-value.safeca-positive {
+  color: var(--safeca-green);
+}
+
+.safeca-metric-value.safeca-negative {
+  color: var(--safeca-red);
+}
+
+/* Breakdown */
+.safeca-popup-breakdown {
+  margin-bottom: 16px;
+}
+
+.safeca-popup-breakdown h4 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--safeca-text-primary);
+}
+
+.safeca-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.safeca-breakdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.safeca-breakdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.safeca-breakdown-label {
+  font-size: 12px;
+  color: var(--safeca-text-secondary);
+}
+
+.safeca-breakdown-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.safeca-breakdown-status svg {
+  width: 12px;
+  height: 12px;
+}
+
+.safeca-breakdown-bar {
+  height: 4px;
+  background: var(--safeca-dark-surface);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.safeca-breakdown-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+/* Actions */
+.safeca-popup-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.safeca-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--safeca-radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--safeca-transition);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.safeca-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.safeca-btn-watchlist {
+  background: var(--safeca-blue);
+  color: white;
+}
+
+.safeca-btn-watchlist:hover {
+  background: #2563eb;
+}
+
+.safeca-btn-watchlist:disabled,
+.safeca-btn-watchlist.safeca-btn-added {
+  background: var(--safeca-green);
+  cursor: default;
+  opacity: 0.9;
+}
+
+.safeca-btn-watchlist.safeca-btn-added:hover {
+  background: var(--safeca-green);
+}
+
+.safeca-btn-remove {
+  background: var(--safeca-red);
+  color: white;
+}
+
+.safeca-btn-remove:hover {
+  background: #dc2626;
+}
+
+.safeca-btn-dex {
+  background: var(--safeca-dark-surface);
+  color: var(--safeca-text-primary);
+  border: 1px solid var(--safeca-dark-border);
+}
+
+.safeca-btn-dex:hover {
+  background: var(--safeca-dark-border);
+}
+
+/* Animations */
+@keyframes safeca-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes safeca-slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes safeca-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar styling for popup */
+.safeca-popup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.safeca-popup::-webkit-scrollbar-track {
+  background: var(--safeca-dark-surface);
+}
+
+.safeca-popup::-webkit-scrollbar-thumb {
+  background: var(--safeca-dark-border);
+  border-radius: 3px;
+}
+
+.safeca-popup::-webkit-scrollbar-thumb:hover {
+  background: var(--safeca-gray);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .safeca-popup {
+    width: calc(100vw - 20px);
+    left: 10px !important;
+    right: 10px;
+  }
+  
+  .safeca-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}

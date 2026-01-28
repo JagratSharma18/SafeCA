@@ -1,0 +1,37 @@
+{
+  "name": "safe-ca-extension",
+  "version": "1.0.0",
+  "description": "Real-time token safety scanning for meme coins and crypto launches",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config jest.config.js --coverage",
+    "build": "node scripts/build.js",
+    "build:icons": "node scripts/generate-icons.js",
+    "lint": "eslint src/**/*.js popup/**/*.js tests/**/*.js",
+    "package": "node scripts/package.js",
+    "clean": "rm -rf dist build"
+  },
+  "keywords": [
+    "chrome-extension",
+    "firefox-extension",
+    "crypto",
+    "token-scanner",
+    "meme-coins",
+    "web3",
+    "defi"
+  ],
+  "author": "Safe CA Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "archiver": "^6.0.1",
+    "esbuild": "^0.19.0",
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "sharp": "^0.32.6"
+  }
+}

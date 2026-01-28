@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe CA - Token Safety Scanner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <div class="logo">
+          <svg class="logo-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L21 6V11C21 16.55 17.16 21.74 12 23C6.84 21.74 3 16.55 3 11V6L12 2Z" fill="currentColor" opacity="0.2"/>
+            <path d="M12 2L21 6V11C21 16.55 17.16 21.74 12 23C6.84 21.74 3 16.55 3 11V6L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo-text">Safe CA</span>
+        </div>
+        <span class="version">v1.0.0</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="scan">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <span class="tab-label">Scan</span>
+      </button>
+      <button class="tab" data-tab="watchlist">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span class="tab-label">Watchlist</span>
+        <span class="tab-badge" id="watchlist-count">0</span>
+      </button>
+      <button class="tab" data-tab="settings">
+        <svg class="tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span class="tab-label">Settings</span>
+      </button>
+    </nav>
+
+    <!-- Tab Content -->
+    <main class="content">
+      <!-- Scan Tab -->
+      <section class="tab-content active" id="tab-scan">
+        <div class="scan-input-container">
+          <label for="address-input" class="input-label">Enter Contract Address</label>
+          <div class="input-group">
+            <textarea 
+              id="address-input" 
+              class="address-input" 
+              placeholder="Paste contract address(es) here...
+
+Supports:
+- Solana (base58)
+- EVM (0x...)
+
+Multiple addresses: one per line"
+              rows="4"
+            ></textarea>
+          </div>
+          
+          <div class="chain-selector">
+            <label class="input-label">Chain (auto-detected)</label>
+            <div class="chain-options">
+              <button class="chain-btn active" data-chain="auto">Auto</button>
+              <button class="chain-btn" data-chain="1">ETH</button>
+              <button class="chain-btn" data-chain="56">BSC</button>
+              <button class="chain-btn" data-chain="137">Polygon</button>
+              <button class="chain-btn" data-chain="8453">Base</button>
+              <button class="chain-btn" data-chain="42161">Arbitrum</button>
+              <button class="chain-btn" data-chain="solana">Solana</button>
+            </div>
+          </div>
+          
+          <button class="scan-btn" id="scan-btn">
+            <svg class="scan-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <span class="scan-btn-text">Scan Token</span>
+          </button>
+        </div>
+
+        <!-- Scan Results -->
+        <div class="results-container" id="results-container">
+          <!-- Results will be injected here -->
+        </div>
+      </section>
+
+      <!-- Watchlist Tab -->
+      <section class="tab-content" id="tab-watchlist">
+        <div class="watchlist-header">
+          <h2 class="section-title">Your Watchlist</h2>
+          <button class="refresh-btn" id="refresh-watchlist" title="Refresh all">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 4v6h-6"/>
+              <path d="M1 20v-6h6"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="watchlist-container" id="watchlist-container">
+          <div class="empty-state" id="watchlist-empty">
+            <svg class="empty-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <p class="empty-text">No tokens in watchlist</p>
+            <p class="empty-hint">Scan a token and click "Add to Watchlist"</p>
+          </div>
+          
+          <div class="watchlist-items" id="watchlist-items">
+            <!-- Watchlist items will be injected here -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings Tab -->
+      <section class="tab-content" id="tab-settings">
+        <div class="settings-container">
+          <h2 class="section-title">Settings</h2>
+          
+          <div class="settings-group">
+            <h3 class="settings-group-title">General</h3>
+            
+            <label class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Auto-scan on X/Twitter</span>
+                <span class="setting-desc">Automatically detect and scan CAs in tweets</span>
+              </div>
+              <input type="checkbox" class="toggle" id="setting-autoscan" checked>
+            </label>
+            
+            <label class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Show badges</span>
+                <span class="setting-desc">Display safety badges next to detected CAs</span>
+              </div>
+              <input type="checkbox" class="toggle" id="setting-badges" checked>
+            </label>
+            
+            <label class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Dark mode</span>
+                <span class="setting-desc">Use dark theme</span>
+              </div>
+              <input type="checkbox" class="toggle" id="setting-darkmode" checked>
+            </label>
+          </div>
+          
+          <div class="settings-group">
+            <h3 class="settings-group-title">Notifications</h3>
+            
+            <label class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Enable notifications</span>
+                <span class="setting-desc">Get alerts for watchlist changes</span>
+              </div>
+              <input type="checkbox" class="toggle" id="setting-notifications" checked>
+            </label>
+            
+            <label class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Watchlist polling</span>
+                <span class="setting-desc">Automatically check watchlist every 5 minutes</span>
+              </div>
+              <input type="checkbox" class="toggle" id="setting-polling" checked>
+            </label>
+          </div>
+          
+          <div class="settings-group">
+            <h3 class="settings-group-title">Alert Thresholds</h3>
+            
+            <div class="threshold-item">
+              <label class="threshold-label">
+                <span>Liquidity drop alert</span>
+                <span class="threshold-value" id="threshold-liquidity-value">10%</span>
+              </label>
+              <input type="range" class="threshold-slider" id="threshold-liquidity" min="5" max="50" value="10">
+            </div>
+            
+            <div class="threshold-item">
+              <label class="threshold-label">
+                <span>Score drop alert</span>
+                <span class="threshold-value" id="threshold-score-value">15 pts</span>
+              </label>
+              <input type="range" class="threshold-slider" id="threshold-score" min="5" max="50" value="15">
+            </div>
+          </div>
+          
+          <div class="settings-group">
+            <h3 class="settings-group-title">Allowed Websites</h3>
+            
+            <div class="websites-container" id="websites-container">
+              <div class="website-input-group">
+                <input 
+                  type="text" 
+                  id="website-input" 
+                  class="website-input" 
+                  placeholder="Enter domain (e.g., example.com)"
+                >
+                <button class="website-add-btn" id="add-website-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                  Add
+                </button>
+              </div>
+              <div class="websites-list" id="websites-list">
+                <!-- Websites will be injected here -->
+              </div>
+              <p class="setting-desc" style="margin-top: 8px; font-size: 11px; color: var(--text-muted);">
+                Add websites where you want Safe CA to automatically detect contract addresses. Default: X/Twitter.
+              </p>
+            </div>
+          </div>
+          
+          <div class="settings-group">
+            <h3 class="settings-group-title">Data</h3>
+            
+            <button class="action-btn" id="clear-cache">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+              Clear Cache
+            </button>
+            
+            <button class="action-btn danger" id="clear-watchlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              Clear Watchlist
+            </button>
+          </div>
+          
+          <div class="settings-footer">
+            <p class="settings-info-text">
+              Safe CA v1.0.0
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

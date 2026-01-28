@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Safe CA Extension</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #f9fafb;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #111827;
+        }
+        
+        .last-updated {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #111827;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #374151;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            color: #4b5563;
+        }
+        
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+            color: #4b5563;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 16px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .no-data {
+            background: #d1fae5;
+            padding: 16px;
+            border-left: 4px solid #10b981;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 14px;
+        }
+        
+        .contact {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: <span id="current-date"></span></p>
+        
+        <p>This Privacy Policy describes how Safe CA ("we", "our", or "us") handles information when you use the Safe CA browser extension ("Extension").</p>
+        
+        <div class="no-data">
+            <strong>🔒 No Personal Data Collection:</strong> Safe CA does not collect, store, or transmit any personally identifiable information. All data is stored locally in your browser.
+        </div>
+        
+        <h2>1. Information We Do NOT Collect</h2>
+        
+        <p>Safe CA does not collect, store, or transmit any of the following:</p>
+        
+        <ul>
+            <li><strong>Personally Identifiable Information:</strong> We do not collect names, email addresses, physical addresses, phone numbers, or any other personal identifiers.</li>
+            <li><strong>Browsing History:</strong> We do not track or store the websites you visit.</li>
+            <li><strong>Wallet Information:</strong> We do not access, collect, or store wallet addresses, private keys, seed phrases, or any wallet-related data.</li>
+            <li><strong>Transaction Data:</strong> We do not collect or store any transaction history or payment information.</li>
+            <li><strong>Location Data:</strong> We do not collect GPS coordinates, IP addresses, or location information.</li>
+            <li><strong>User Activity:</strong> We do not monitor clicks, mouse movements, scroll behavior, or keystrokes.</li>
+            <li><strong>Personal Communications:</strong> We do not access emails, text messages, or chat conversations.</li>
+            <li><strong>Analytics or Tracking:</strong> We do not use analytics tools, tracking pixels, or any third-party tracking services.</li>
+        </ul>
+        
+        <h2>2. Information Stored Locally</h2>
+        
+        <p>All data is stored locally in your browser using Chrome's storage API. This data never leaves your device:</p>
+        
+        <h3>2.1 Watchlist Data</h3>
+        <p>When you add tokens to your watchlist, the following information is stored locally:</p>
+        <ul>
+            <li>Contract addresses (public blockchain addresses)</li>
+            <li>Blockchain network (Ethereum, Solana, etc.)</li>
+            <li>Token safety scores and analysis data</li>
+            <li>Baseline data for change detection</li>
+        </ul>
+        <p><strong>Storage Location:</strong> <code>chrome.storage.sync</code> (synced across your devices if you're signed into Chrome)</p>
+        
+        <h3>2.2 Extension Settings</h3>
+        <p>Your extension preferences are stored locally:</p>
+        <ul>
+            <li>Auto-scan enabled/disabled</li>
+            <li>Badge display preferences</li>
+            <li>Dark mode preference</li>
+            <li>Notification settings</li>
+            <li>Watchlist polling settings</li>
+            <li>Alert thresholds</li>
+            <li>Custom allowed websites list</li>
+        </ul>
+        <p><strong>Storage Location:</strong> <code>chrome.storage.local</code> (device-specific)</p>
+        
+        <h3>2.3 Token Data Cache</h3>
+        <p>To improve performance and reduce API calls, token scan results are temporarily cached locally for 5 minutes:</p>
+        <ul>
+            <li>Token safety scores</li>
+            <li>Risk analysis data</li>
+            <li>Market data (price, liquidity, etc.)</li>
+        </ul>
+        <p><strong>Storage Location:</strong> <code>chrome.storage.local</code></p>
+        <p><strong>Cache Duration:</strong> 5 minutes (automatically expires)</p>
+        
+        <h2>3. Information Transmitted to External Services</h2>
+        
+        <p>The extension makes API calls to fetch token safety data. Only public contract addresses are transmitted:</p>
+        
+        <h3>3.1 Contract Addresses</h3>
+        <p>When you scan a token or when the extension detects a contract address, only the public contract address is sent to security analysis APIs:</p>
+        
+        <ul>
+            <li><strong>GoPlus Labs API</strong> (<code>api.gopluslabs.io</code>): Token security audits for EVM chains</li>
+            <li><strong>RugCheck API</strong> (<code>api.rugcheck.xyz</code>): Solana token analysis</li>
+            <li><strong>Honeypot.is API</strong> (<code>api.honeypot.is</code>): Honeypot detection</li>
+            <li><strong>DexScreener API</strong> (<code>api.dexscreener.com</code>): Market data and liquidity information</li>
+            <li><strong>Blockchain RPC Endpoints</strong>: On-chain data queries (Solana, Ethereum, BSC, Polygon, Base, Arbitrum, Avalanche)</li>
+        </ul>
+        
+        <div class="highlight">
+            <strong>Important:</strong> Only public contract addresses (blockchain addresses like <code>0x1234...</code> or Solana addresses) are sent to these APIs. These are public blockchain data, not personal information. No user identifiers, browsing history, or personal data is included in these requests.
+        </div>
+        
+        <h3>3.2 API Response Data</h3>
+        <p>The APIs return token safety analysis data, which is:</p>
+        <ul>
+            <li>Processed locally in your browser</li>
+            <li>Temporarily cached for 5 minutes to reduce API calls</li>
+            <li>Never transmitted to any other service</li>
+            <li>Never shared with third parties</li>
+        </ul>
+        
+        <h2>4. Website Content Access</h2>
+        
+        <p>The extension reads text content from web pages to detect contract addresses. This is limited to:</p>
+        
+        <ul>
+            <li><strong>Default Websites:</strong> X/Twitter (x.com, twitter.com, mobile.twitter.com)</li>
+            <li><strong>Custom Websites:</strong> Only websites you explicitly add in the extension settings</li>
+            <li><strong>Purpose:</strong> Extract contract addresses from page text using pattern matching</li>
+            <li><strong>Processing:</strong> All processing happens locally in your browser</li>
+            <li><strong>Storage:</strong> Full page content is never stored or transmitted</li>
+        </ul>
+        
+        <p>Only the detected contract addresses (public blockchain data) are extracted and sent to security APIs for analysis.</p>
+        
+        <h2>5. Permissions Explained</h2>
+        
+        <h3>5.1 Storage Permission</h3>
+        <p>Used to store your watchlist, settings, and cache data locally in your browser. No data is transmitted to external servers.</p>
+        
+        <h3>5.2 Alarms Permission</h3>
+        <p>Used to periodically check your watchlist tokens for changes every 5 minutes. This allows the extension to monitor tokens in the background.</p>
+        
+        <h3>5.3 Notifications Permission</h3>
+        <p>Used to send desktop notifications when tokens in your watchlist experience critical changes (liquidity drops, score decreases, etc.). You can disable notifications in settings.</p>
+        
+        <h3>5.4 Context Menus Permission</h3>
+        <p>Used to add a "Scan with Safe CA" option to the right-click menu, allowing you to quickly scan contract addresses you encounter while browsing.</p>
+        
+        <h3>5.5 ActiveTab Permission</h3>
+        <p>Used to access the currently active tab when you use the right-click "Scan" feature. Only accessed when you explicitly trigger the context menu action.</p>
+        
+        <h3>5.6 Scripting Permission</h3>
+        <p>Used to inject content scripts into custom websites you add to your allowed list. This enables contract address detection on websites you choose. Scripts are only injected on websites you explicitly add.</p>
+        
+        <h3>5.7 Tabs Permission</h3>
+        <p>Used to query browser tabs when you add a custom website, so the extension can immediately inject the content script on open tabs without requiring a page refresh.</p>
+        
+        <h3>5.8 Host Permissions (API Endpoints)</h3>
+        <p>Required to make API calls to token security services and blockchain RPC endpoints. These are used exclusively to fetch token safety data. No user data is transmitted beyond the contract address being analyzed.</p>
+        
+        <h2>6. Data Sharing and Third Parties</h2>
+        
+        <div class="no-data">
+            <strong>✅ We Do NOT:</strong>
+            <ul>
+                <li>Sell or rent your data to third parties</li>
+                <li>Share your data with advertisers</li>
+                <li>Use your data for marketing purposes</li>
+                <li>Transfer your data to determine creditworthiness</li>
+                <li>Use your data for lending purposes</li>
+            </ul>
+        </div>
+        
+        <p>The only data transmitted is public contract addresses sent to security analysis APIs (GoPlus Labs, RugCheck, Honeypot.is, DexScreener) for token safety analysis, which is the core purpose of the extension.</p>
+        
+        <h2>7. Data Security</h2>
+        
+        <p>All user data is stored locally in your browser using Chrome's secure storage API. The extension:</p>
+        <ul>
+            <li>Does not maintain any external servers or databases</li>
+            <li>Does not have access to your data</li>
+            <li>Cannot read your data remotely</li>
+            <li>Uses HTTPS for all API communications</li>
+            <li>Implements rate limiting to prevent API abuse</li>
+        </ul>
+        
+        <h2>8. Children's Privacy</h2>
+        
+        <p>Safe CA is not intended for children under 13 years of age. We do not knowingly collect information from children. If you believe we have inadvertently collected information from a child, please contact us immediately.</p>
+        
+        <h2>9. Data Retention and Deletion</h2>
+        
+        <p>You have full control over your data:</p>
+        <ul>
+            <li><strong>Watchlist:</strong> Stored until you remove tokens or clear the watchlist</li>
+            <li><strong>Settings:</strong> Stored until you change or reset them</li>
+            <li><strong>Cache:</strong> Automatically expires after 5 minutes</li>
+            <li><strong>Deletion:</strong> You can clear all data at any time using the "Clear Cache" and "Clear Watchlist" options in the extension settings</li>
+        </ul>
+        
+        <p>When you uninstall the extension, all locally stored data is automatically deleted by Chrome.</p>
+        
+        <h2>10. Changes to This Privacy Policy</h2>
+        
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by:</p>
+        <ul>
+            <li>Updating the "Last Updated" date at the top of this policy</li>
+            <li>Posting a notice in the extension (if significant changes occur)</li>
+        </ul>
+        
+        <p>Your continued use of the extension after any changes constitutes acceptance of the updated Privacy Policy.</p>
+        
+        <h2>11. Your Rights</h2>
+        
+        <p>You have the right to:</p>
+        <ul>
+            <li><strong>Access:</strong> View all data stored by the extension in your browser's storage</li>
+            <li><strong>Delete:</strong> Remove any or all data using the extension's settings</li>
+            <li><strong>Control:</strong> Enable or disable any feature that processes data</li>
+            <li><strong>Uninstall:</strong> Remove the extension at any time, which deletes all stored data</li>
+        </ul>
+        
+        <h2>12. Contact Us</h2>
+        
+        <div class="contact">
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <p>
+                <strong>Email:</strong> <a href="mailto:privacy@safeca.app">privacy@safeca.app</a><br>
+                <strong>Website:</strong> <a href="https://safeca.app" target="_blank">https://safeca.app</a>
+            </p>
+        </div>
+        
+        <h2>13. Compliance</h2>
+        
+        <p>Safe CA is designed to comply with:</p>
+        <ul>
+            <li>Chrome Web Store Developer Program Policies</li>
+            <li>General Data Protection Regulation (GDPR) principles</li>
+            <li>California Consumer Privacy Act (CCPA) requirements</li>
+        </ul>
+        
+        <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">
+            By using Safe CA, you acknowledge that you have read and understood this Privacy Policy and agree to its terms.
+        </p>
+    </div>
+    
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "manifest_version": 3,
+  "name": "Safe CA - Token Safety Scanner",
+  "short_name": "Safe CA",
+  "version": "1.0.0",
+  "description": "Real-time token safety scanner. Detects contract addresses on X/Twitter and custom websites with instant risk assessment.",
+  "author": "Safe CA Team",
+  "homepage_url": "https://safeca.app",
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Safe CA - Token Safety Scanner"
+  },
+  
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*"
+      ],
+      "js": ["src/content/content.js"],
+      "css": ["src/styles/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  
+  "host_permissions": [
+    "https://api.gopluslabs.io/*",
+    "https://api.rugcheck.xyz/*",
+    "https://api.honeypot.is/*",
+    "https://api.dexscreener.com/*",
+    "https://api.mainnet-beta.solana.com/*",
+    "https://rpc.ankr.com/*",
+    "https://mainnet.base.org/*",
+    "https://bsc-dataseed.binance.org/*",
+    "https://polygon-rpc.com/*",
+    "https://api.avax.network/*",
+    "https://arb1.arbitrum.io/*"
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/styles/content.css",
+        "icons/*",
+        "src/assets/*"
+      ],
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://mobile.twitter.com/*"
+      ]
+    }
+  ],
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  
+  "minimum_chrome_version": "102",
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "safeca@safeca.app",
+      "strict_min_version": "109.0"
+    }
+  }
+}

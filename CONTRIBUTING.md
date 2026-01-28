@@ -85,7 +85,11 @@ npm install
 
 ### Build
 ```bash
+# Build extension to dist/ folder
 npm run build
+
+# Create distribution packages (ZIP files)
+npm run package
 ```
 
 ### Testing
@@ -96,9 +100,18 @@ npm test
 # Run with coverage
 npm run test:coverage
 
-# Watch mode
+# Watch mode (for development)
 npm run test:watch
 ```
+
+### Development Workflow
+
+1. Make changes to source files in `src/`
+2. Run `npm run build` to compile changes
+3. Load `dist/` folder in browser as unpacked extension
+4. Test your changes
+5. Run `npm test` to ensure tests pass
+6. Commit and push your changes
 
 ### Code Style
 
@@ -110,15 +123,34 @@ npm run test:watch
 
 ### Project Structure
 
-- `src/` - Source code
-  - `background/` - Service worker
-  - `content/` - Content scripts
-  - `utils/` - Shared utilities
-  - `styles/` - CSS files
-- `popup/` - Extension popup UI
-- `tests/` - Test files
-- `scripts/` - Build scripts
-- `icons/` - Extension icons
+```
+SafeCA/
+├── src/                   # Source code
+│   ├── background/        # Background service worker
+│   ├── content/           # Content scripts (injected into web pages)
+│   ├── utils/             # Shared utilities (API, scoring, storage, helpers)
+│   ├── styles/            # CSS styles for injected content
+│   └── assets/            # Static assets
+├── popup/                 # Extension popup UI (HTML, CSS, JS)
+├── icons/                 # Extension icons (SVG and PNG)
+├── tests/                 # Test suites
+│   ├── unit/              # Unit tests
+│   ├── integration/       # Integration tests
+│   └── manual/            # Manual test scenarios
+├── scripts/               # Build and utility scripts
+│   ├── build.js           # Main build script
+│   ├── package.js         # Package creation script
+│   └── generate-icons.js  # Icon generation
+├── manifest.json          # Extension manifest (Manifest V3)
+└── package.json           # NPM configuration
+```
+
+Key files to understand:
+- `src/background/service-worker.js` - Background script handling API calls and watchlist
+- `src/content/content.js` - Content script for CA detection and badge injection
+- `src/utils/scoring.js` - Safety score calculation logic
+- `src/utils/api.js` - API integrations (GoPlus, RugCheck, Honeypot, DexScreener)
+- `popup/popup.js` - Popup UI logic
 
 ## Pull Request Process
 

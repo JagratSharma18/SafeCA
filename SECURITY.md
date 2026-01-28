@@ -10,7 +10,7 @@ We release patches for security vulnerabilities. Which versions are eligible for
 
 ## Reporting a Vulnerability
 
-Please report security vulnerabilities by emailing: security@safeca.app
+Please report security vulnerabilities by emailing: svtcontactus@gmail.com
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 

@@ -17,7 +17,7 @@ If you find Safe CA useful, please consider supporting our project!
 **Token Contract Address:**
 
 ```
-GGoFzQY1u3Qk3qfdY6Z9iUZfSJn8dAyriRbHkqC8BAGS
+CHWSfXHQbKPs6SfWdpauwaupyjYxkqg6xSRpD2jmBAGS
 ```
 
 Your support helps us maintain and improve the extension. Thank you!

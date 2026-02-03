@@ -6,25 +6,7 @@
 [![Chrome Web Store](https://img.shields.io/badge/Chrome-Extension-yellow.svg)](https://chrome.google.com/webstore)
 [![Firefox Add-ons](https://img.shields.io/badge/Firefox-Add--on-orange.svg)](https://addons.mozilla.org)
 
----
 
-<div align="center">
-
-# Support Us ❤️
-
-If you find Safe CA useful, please consider supporting our project!
-
-**Token Contract Address:**
-
-```
-CHWSfXHQbKPs6SfWdpauwaupyjYxkqg6xSRpD2jmBAGS
-```
-
-Your support helps us maintain and improve the extension. Thank you!
-
-</div>
-
----
 
 A lightweight, cross-browser browser extension for real-time token safety scanning of meme coins and crypto launches. Automatically detects contract addresses on X/Twitter and custom websites, providing instant risk assessment with color-coded safety badges.
 
